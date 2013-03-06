@@ -5,5 +5,5 @@ Short reference card for gentoo beginners
 
 Authors
 =======
-Randy Andy
-Jonas Stein
+* Randy Andy
+* Jonas Stein
