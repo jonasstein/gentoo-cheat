@@ -61,7 +61,7 @@
 %\newenvironment{hangparas}[2]{\setlength{\parindent}{\z@}\everypar={\hangpara{#1}{#2}}}
 
 \newcommand{\describe}[1]{\begin{description}{#1}\end{description}}
-
+\newcommand{\asroot}{\# }
 
 % -----------------------------------------------------------------------
 
@@ -85,13 +85,23 @@
 \end{center}
 \href{mailto:news@jonasstein.de}{Jonas Stein} maintains 
 the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. Contributors: Randy Andy.
+A \asroot as first character indicates a command which is usually run in a root shell.
 \everypar={\hangindent=9mm}
 
 \section{Portage package management}
-\bcode{emerge -pv packagename} verbose simulation of package installation\\ 
-\bcode{eix packagename} documentation on a package%\code{packagename} 
+\bcode{\asroot emerge --sync} download latest package information from the mirror\\
+\bcode{\asroot emerge -pv packagename} verbose simulation of package installation\\ 
+\bcode{\asroot emerge -C packagename} remove package\\ 
+\bcode{\asroot emerge -uDN world} upgrade the whole system\\
+\bcode{\asroot eix packagename} documentation on a package\\ %\code{packagename} 
+\bcode{\asroot porthole} a gui for emerge\\
 
 \section{USE flags}
+
+\section{Typical administration}
+\bcode{sudo -s} used by a user from sudoers list to get a root shell\\
+\bcode{\asroot rc-update add sshd default} Start the ssh daemon in the default runlevel\\
+\bcode{\asroot rc-status sshd} request wether sshd is running or not
 
 \section{Important files}
 \bcode{/etc/portage/make.conf} global settings (USE flags, compiler options)\\
