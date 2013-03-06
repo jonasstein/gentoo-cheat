@@ -85,12 +85,18 @@
 \end{center}
 \href{mailto:news@jonasstein.de}{Jonas Stein} maintains 
 the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. Contributors: Randy Andy.
-\section{Getting help}
 \everypar={\hangindent=9mm}
 
+\section{Portage package management}
 \bcode{emerge -pv packagename} verbose simulation of package installation\\ 
-
 \bcode{eix packagename} documentation on a package%\code{packagename} 
 
+\section{USE flags}
+
+\section{Important files}
+\bcode{/etc/portage/make.conf} global settings (USE flags, compiler options)\\
+\bcode{/etc/portage/package.use} USE flags of individual packages\\
+\bcode{/etc/portage/package.keywords} keywords of individual packages (like ~amd86 for\\ 64bit-testing)\\
+\bcode{/etc/portage/package.license} accepted licenses
 \end{multicols*}
 \end{document}
