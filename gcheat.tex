@@ -14,7 +14,7 @@
   urlcolor = blue, 
   pdfpagemode=UseNone, 
   pdfstartview=FitH,
-  pdfauthor= {Jonas Stein, Randy Andy},
+  pdfauthor= {Jonas Stein, Randy Andy, Jean-Paul},
   pdftitle= R Reference Card
 }
 
@@ -62,6 +62,7 @@
 
 \newcommand{\describe}[1]{\begin{description}{#1}\end{description}}
 \newcommand{\asroot}{\# }
+\newcommand{\asuser}{\$ }
 
 % -----------------------------------------------------------------------
 
@@ -84,7 +85,7 @@
  \today
 \end{center}
 \href{mailto:news@jonasstein.de}{Jonas Stein} maintains 
-the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. Contributors: Randy Andy.
+the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. Contributors: Randy Andy, Jean-Paul.
 A \asroot as first character indicates a command which is usually run in a root shell.
 \everypar={\hangindent=9mm}
 
@@ -92,21 +93,26 @@ A \asroot as first character indicates a command which is usually run in a root 
 \bcode{\asroot emerge --sync} download latest package information from the mirror\\
 \bcode{\asroot emerge -pv packagename} verbose simulation of package installation\\ 
 \bcode{\asroot emerge -C packagename} remove package\\ 
+\bcode{\asroot emerge -av --depclean} remove no longer needed packages\\
 \bcode{\asroot emerge -uDN world} upgrade the whole system\\
 \bcode{\asroot eix packagename} documentation on a package\\ %\code{packagename} 
 \bcode{\asroot porthole} a gui for emerge\\
+\bcode{\asroot dispatch-conf} manage config changes after emerge\\
+\bcode{\asroot eix-sync} sync the portage/overlay trees\\
+
 
 \section{USE flags}
 
 \section{Typical administration}
-\bcode{sudo -s} used by a user from sudoers list to get a root shell\\
+\bcode{\asuser sudo -s} used by a user from sudoers list to get a root shell\\
 \bcode{\asroot rc-update add sshd default} Start the ssh daemon in the default runlevel\\
+\bcode{\asroot rc-service xdm start} Start the windowmanager now\\
 \bcode{\asroot rc-status sshd} request wether sshd is running or not
 
 \section{Important files}
 \bcode{/etc/portage/make.conf} global settings (USE flags, compiler options)\\
 \bcode{/etc/portage/package.use} USE flags of individual packages\\
-\bcode{/etc/portage/package.keywords} keywords of individual packages (like ~amd86 for\\ 64bit-testing)\\
+\bcode{/etc/portage/package.keywords} keywords of individual packages (like $\sim{}$amd86 for\\ 64bit-testing)\\
 \bcode{/etc/portage/package.license} accepted licenses
 \end{multicols*}
 \end{document}
