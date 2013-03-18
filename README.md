@@ -3,7 +3,11 @@ gentoo-cheat sheet
 
 Short reference card for gentoo beginners
 
-Authors
-=======
-* Randy Andy
+Maintainer
+==========
 * Jonas Stein
+
+Contributor
+===========
+* Randy Andy
+* Jean-Paul
