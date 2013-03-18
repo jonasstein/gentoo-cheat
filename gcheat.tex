@@ -1,10 +1,10 @@
-\documentclass[8pt,landscape]{article}
+\documentclass[landscape]{article}
 %\usepackage{pslatex}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{calc}
 \usepackage{color}
-
+\usepackage{textcomp}
 \usepackage{hyperref}
 \usepackage[]{url}
 \hypersetup{%
@@ -95,11 +95,12 @@ A \asroot as first character indicates a command which is usually run in a root 
 \bcode{\asroot emerge -C packagename} remove package\\ 
 \bcode{\asroot emerge -av --depclean} remove no longer needed packages\\
 \bcode{\asroot emerge -uDN world} upgrade the whole system\\
+\bcode{\asuser equery b \textacutedbl which dig\textacutedbl} tells which installed package provides dig\\
 \bcode{\asroot eix packagename} documentation on a package\\ %\code{packagename} 
 \bcode{\asroot porthole} a gui for emerge\\
 \bcode{\asroot dispatch-conf} manage config changes after emerge\\
 \bcode{\asroot eix-sync} sync the portage/overlay trees\\
-
+\bcode{\asroot revdep-rebuild} rebuilds packages that depend on an recently updated library\\
 
 \section{USE flags}
 
