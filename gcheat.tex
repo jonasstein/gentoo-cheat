@@ -6,6 +6,7 @@
 \usepackage{color}
 \usepackage{textcomp}
 \usepackage{hyperref}
+\usepackage{xspace}
 \usepackage[]{url}
 \hypersetup{%
   colorlinks=true,  
@@ -63,6 +64,8 @@
 \newcommand{\describe}[1]{\begin{description}{#1}\end{description}}
 \newcommand{\asroot}{\# }
 \newcommand{\asuser}{\$ }
+\newcommand{\cp}{{\color{blue}cp}\xspace}
+\newcommand{\cpv}{{\color{blue}cpv}\xspace}
 
 % -----------------------------------------------------------------------
 
@@ -85,21 +88,25 @@
  \today
 \end{center}
 \href{mailto:news@jonasstein.de}{Jonas Stein} maintains 
-the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. Contributors: Randy Andy, Jean-Paul.
-A \asroot as first character indicates a command which is usually run in a root shell.
+the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{github} feel free to contact him for contributions. A \asroot as first character indicates a command which is usually run in a root shell. 
 \everypar={\hangindent=9mm}
+
+\section{Abbreviations}
+\cp stands for category + program name like in \code{app-editors/vim}\\
+\cpv stands for category + program name + version number like in \code{app-editors/vim-7.3.409}\\
 
 \section{Portage package management}
 \bcode{\asroot emerge --sync} download latest package information from the mirror\\
-\bcode{\asroot emerge -pv packagename} verbose simulation of package installation\\ 
-\bcode{\asroot emerge -C packagename} remove package\\ 
+\bcode{\asroot eix-sync} sync the overlay trees \textbf{and} run \code{emerge --sync} in one command\\
+\bcode{\asroot emerge -pv \cp} verbose simulation of package installation\\ 
+\bcode{\asroot emerge =cpv} install special version of a package\\ 
+\bcode{\asroot emerge -C \cp} remove package\\ 
 \bcode{\asroot emerge -av --depclean} remove no longer needed packages\\
 \bcode{\asroot emerge -uDN world} upgrade the whole system\\
 \bcode{\asuser equery b \textacutedbl which dig\textacutedbl} tells which installed package provides dig\\
-\bcode{\asroot eix packagename} documentation on a package\\ %\code{packagename} 
+\bcode{\asroot eix \cp} documentation on a package\\ %\code{packagename} 
 \bcode{\asroot porthole} a gui for emerge\\
 \bcode{\asroot dispatch-conf} manage config changes after emerge\\
-\bcode{\asroot eix-sync} sync the portage/overlay trees\\
 \bcode{\asroot revdep-rebuild} rebuilds packages that depend on an recently updated library\\
 
 \section{USE flags}
@@ -116,5 +123,10 @@ A \asroot as first character indicates a command which is usually run in a root 
 \bcode{/etc/portage/package.keywords} keywords of individual packages (like $\sim{}$amd86 for\\ 64bit-testing)\\
 \bcode{/etc/portage/package.license} accepted licenses\\
 \bcode{/var/lib/portage/world} list of explicitly installed package atoms
+
+%\section{Installation}
+%The official installation is well described in the handbook on \url{http://www.gentoo.org/doc/de/handbook/}. 
+%The following steps help me to remember the strategy.\\
+%Boot systemrescue-cd and mount the target root partition to \code{/mnt/gentoo}. (
 \end{multicols*}
 \end{document}
