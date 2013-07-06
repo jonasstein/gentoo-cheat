@@ -20,7 +20,7 @@
 }
 
 \urlstyle{same}
-
+\usepackage{booktabs}
 
 % Turn off header and footer
 \pagestyle{empty}
@@ -64,8 +64,10 @@
 \newcommand{\describe}[1]{\begin{description}{#1}\end{description}}
 \newcommand{\asroot}{\# }
 \newcommand{\asuser}{\$ }
-\newcommand{\cp}{{\color{blue}cp}\xspace}
-\newcommand{\cpv}{{\color{blue}cpv}\xspace}
+\newcommand{\file}{{\color{magenta} file}\xspace}
+\newcommand{\pkg}{{\color{blue} pkg}\xspace}
+\newcommand{\cp}{{\color{blue} cat/pkg}\xspace}
+\newcommand{\cpv}{{\color{blue} cat/pkg-1.0}\xspace}
 
 % -----------------------------------------------------------------------
 
@@ -92,24 +94,37 @@ the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{githu
 \everypar={\hangindent=9mm}
 
 \section{Abbreviations}
-\cp stands for category + program name like in \code{app-editors/vim}\\
-\cpv stands for category + program name + version number like in \code{app-editors/vim-7.3.409}\\
+
+\begin{tabular}{lll}
+\toprule abbreviation & description & example \\ 
+\toprule \file  & a single \file &  \\ 
+\midrule \pkg &  name of an ebuild package & \code{vim} \\ 
+\midrule \cp & category + package name & \code{app-editors/vim} \\ 
+\midrule \cpv & \cp with version number & \code{app-editors/vim-7.3.409}\\
+\bottomrule 
+\end{tabular} \\
+
+
+
+
 
 \section{Portage package management}
 \bcode{\asroot emerge --sync} download latest package information from the mirror\\
-\bcode{\asroot eix-sync} sync the overlay trees \textbf{and} run \code{emerge --sync} in one command\\
+\bcode{\asroot eix-sync} sync the overlay \textbf{and} run \code{emerge --sync} in one command. Use this, if eix is installed.\\
 \bcode{\asroot emerge -pv \cp} verbose simulation of package installation\\ 
 \bcode{\asroot emerge =cpv} install special version of a package\\ 
-\bcode{\asroot emerge -C \cp} remove package\\ 
+\bcode{\asroot emerge -cav \cp} remove package with dependency checking\\ 
+\bcode{\asroot emerge -C \cp} remove package without dependency checking (use with care)\\ 
 \bcode{\asroot emerge -av --depclean} remove no longer needed packages\\
 \bcode{\asroot emerge -uDN world} upgrade the whole system\\
-\bcode{\asuser equery b \textacutedbl which dig\textacutedbl} tells which installed package provides dig\\
-\bcode{\asroot eix \cp} documentation on a package\\ %\code{packagename} 
+\bcode{\asuser equery b \textacutedbl which \pkg\textacutedbl} tells which installed package provides \pkg\\
+\bcode{\asuser equery d \cp} show packages that depend on \cp\\
+\bcode{\asroot eix \cp} documentation on a package\\ 
 \bcode{\asroot porthole} a gui for emerge\\
 \bcode{\asroot dispatch-conf} manage config changes after emerge\\
 \bcode{\asroot revdep-rebuild} rebuilds packages that depend on an recently updated library\\
-
 \section{USE flags}
+\bcode{\asuser euse} returns a description on the useflag\\
 
 \section{Typical administration}
 \bcode{\asuser sudo -s} used by a user from sudoers list to get a root shell\\
@@ -122,7 +137,8 @@ the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{githu
 \bcode{/etc/portage/package.use} USE flags of individual packages\\
 \bcode{/etc/portage/package.keywords} keywords of individual packages (like $\sim{}$amd86 for\\ 64bit-testing)\\
 \bcode{/etc/portage/package.license} accepted licenses\\
-\bcode{/var/lib/portage/world} list of explicitly installed package atoms
+\bcode{/var/lib/portage/world} list of explicitly installed package atoms\\
+\bcode{/var/db/pkg} contains for every installed package a set of files about the installation
 
 %\section{Installation}
 %The official installation is well described in the handbook on \url{http://www.gentoo.org/doc/de/handbook/}. 
