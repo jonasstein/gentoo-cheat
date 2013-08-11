@@ -112,7 +112,7 @@ the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{githu
 \bcode{\asroot emerge --sync} download latest package information from the mirror\\
 \bcode{\asroot eix-sync} sync the overlay \textbf{and} run \code{emerge --sync} in one command. Use this, if eix is installed.\\
 \bcode{\asroot emerge -pv \cp} verbose simulation of package installation\\ 
-\bcode{\asroot emerge =cpv} install special version of a package\\ 
+\bcode{\asroot emerge =\cpv} install special version of a package\\ 
 \bcode{\asroot emerge -cav \cp} remove package with dependency checking\\ 
 \bcode{\asroot emerge -C \cp} remove package without dependency checking (use with care)\\ 
 \bcode{\asroot emerge -av --depclean} remove no longer needed packages\\
@@ -124,7 +124,7 @@ the source since 2013 on \href{https://github.com/jonasstein/gentoo-cheat}{githu
 \bcode{\asroot dispatch-conf} manage config changes after emerge\\
 \bcode{\asroot revdep-rebuild} rebuilds packages that depend on an recently updated library\\
 \section{USE flags}
-\bcode{\asuser euse} returns a description on the useflag\\
+\bcode{\asuser euse -i } returns a description on the useflag\\
 
 \section{Typical administration}
 \bcode{\asuser sudo -s} used by a user from sudoers list to get a root shell\\
