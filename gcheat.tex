@@ -110,6 +110,7 @@ A \asroot as first character indicates a command which is usually run in a root 
 
 
 \section{Portage package management}
+\bcode{\asuser eix \cp} show package description\\ 
 \bcode{\asroot emerge --sync} download latest package information from the mirror\\
 \bcode{\asroot eix-sync} sync the overlay \textbf{and} run \code{emerge --sync} in one command. Use this, if eix is installed.\\
 \bcode{\asroot emerge -pv \cp} verbose simulation of package installation\\ 
@@ -120,7 +121,6 @@ A \asroot as first character indicates a command which is usually run in a root 
 \bcode{\asroot emerge -uDN world} upgrade the whole system\\
 \bcode{\asuser equery b \textacutedbl which \pkg\textacutedbl} tells which installed package provides \pkg\\
 \bcode{\asuser equery d \cp} show packages that depend on \cp\\
-\bcode{\asroot eix \cp} documentation on a package\\ 
 \bcode{\asroot porthole} a gui for emerge\\
 \bcode{\asroot dispatch-conf} manage config changes after emerge\\
 \bcode{\asroot revdep-rebuild} rebuilds packages that depend on an recently updated library\\
